@@ -76,15 +76,15 @@ flutter run
 
 ### Client (Patient)-
 ...
-   # 1. Register/Login using Firebase Authentication 
-   # 2. View doctor list
-   # 3. Book appointments
-   # 4. Cancel pending appointments
-   # 5. Receive real-time appointment status updates
-   # 6. Join video consultation after appointment acceptance
-   # 7. View consultation history
-   # 8. Edit profile
-   # 9. Receive notifications
+   ##### 1. Register/Login using Firebase Authentication 
+   ##### 2. View doctor list
+   ##### 3. Book appointments
+   ##### 4. Cancel pending appointments
+   ##### 5. Receive real-time appointment status updates
+   ##### 6. Join video consultation after appointment acceptance
+   ##### 7. View consultation history
+   ##### 8. Edit profile
+   ##### 9. Receive notifications
 ...
 ### Doctor-
 ...
