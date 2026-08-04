@@ -64,15 +64,18 @@ flutter pub get
 flutter run
 ```
 
-Features:-
+## Features:-
 
-Authentication-
+### Authentication-
+...
     1. Firebase Authentication
     2. Login & Register
     3. Forgot Password
     4. Role-based Login (Doctor / Client)
+...
 
-Client (Patient)-
+### Client (Patient)-
+...
     1. Register/Login using Firebase Authentication
     2. View doctor list
     3. Book appointments
@@ -82,7 +85,9 @@ Client (Patient)-
     7. View consultation history
     8. Edit profile
     9. Receive notifications
-Doctor-
+...
+### Doctor-
+...
     1. Register/Login
     2. View appointment requests
     3. Accept/Reject appointments
@@ -90,8 +95,10 @@ Doctor-
     5. Start video consultation
     6. Add/Edit/Delete consultation notes
     7. View patient details
+...
 
-Tech Stack:-
+## Tech Stack:-
+...
     1. Technology-               Used-
     2. Flutter	                  UI Framework
     3. Dart	                    Programming Language
@@ -101,11 +108,15 @@ Tech Stack:-
     7. GetX	                    State Management & Routing
     8. flutter_webrtc	          Video Calling
     9. Cloud Firestore           Streams
+...
 
 WebRTC SDK Used:-
+...
 The project uses:  flutter_webrtc
+...
 
-FEatures:
+### Features:
+...
     1. Video Streaming
     2. Audio Streaming
     3. Camera Access
@@ -113,8 +124,10 @@ FEatures:
     5. ICE Candidate Exchange
     6. Peer Connection
     7. SDP Offer/Answer
+...
 
-**Folder Structure**
+## Folder Structure
+...
 lib/
  ├── app/
  │    ├── bindings/
@@ -138,8 +151,10 @@ lib/
  │    ├── call/
  │
  └── main.dart
+...
 
-**How to Run the App**
+### How to Run the App
+...
     1. Clone Repository
        git clone <repository_url>
        cd doctor_consultation
@@ -151,31 +166,38 @@ lib/
            2 Firestore Database
            3 Firebase Storage
            4 Firebase Cloud Messaging
+...
 
-**Video Calling Flow**
-Doctor:-
+### Video Calling Flow
+
+#### Doctor:-
+...
     1. Login
     2. Accept Appointment
     3. Open Appointment
     4. Tap Start Video Call
     5. Offer generated
     6. Firestore signaling starts
-Client:-
+...
+#### Client:-
+....
     1. Login
     2. Appointment Accepted
     3. Join Video Call button appears
     4. Tap Join
     5. Answer generated
     6. Video consultation starts
+...
 
-**How to Test Video Calling**
-Device 1
+#### How to Test Video Calling
+**Device 1**
 Login as Doctor.
 
-Device 2
+**Device 2**
 Login as Client.
 
-Steps:-
+#### Steps:-
+...
     1. Client books appointment.
     2. Doctor receives appointment in real time.
     3. Doctor accepts the appointment.
@@ -190,9 +212,11 @@ Steps:-
         5 Speaker toggle
     8. End the call.
     9. Verify appointment status changes to Completed and call history is saved.
+...
 
     
-**Future Improvements**
+#### Future Improvements
+...
     1. Add TURN server support for reliable WebRTC connectivity behind NAT/firewalls.
     2. Implement incoming call screen with ringtone and accept/decline actions.
     3. Integrate full Firebase Cloud Messaging for foreground, background, and terminated           notifications.
@@ -205,8 +229,10 @@ Steps:-
     10. Add comprehensive unit, widget, and integration tests.
     11. Enhance security with stricter Firestore rules and role-based validation.
     12. Optimize UI/UX for tablets and web.
+...
 
-Dependencies:-
+#### Dependencies:-
+...
     flutter_webrtc
     firebase_core
     firebase_auth
@@ -215,3 +241,4 @@ Dependencies:-
     firebase_messaging
     get
     intl
+...
