@@ -64,181 +64,233 @@ flutter pub get
 flutter run
 ```
 
-## Features:-
+# ✨ Features
 
-### Authentication-
-...
-    1. Firebase Authentication
-    2. Login & Register
-    3. Forgot Password
-    4. Role-based Login (Doctor / Client)
-...
+## 🔐 Authentication
 
-### Client (Patient)-
-...
-   ##### 1. Register/Login using Firebase Authentication 
-   ##### 2. View doctor list
-   ##### 3. Book appointments
-   ##### 4. Cancel pending appointments
-   ##### 5. Receive real-time appointment status updates
-   ##### 6. Join video consultation after appointment acceptance
-   ##### 7. View consultation history
-   ##### 8. Edit profile
-   ##### 9. Receive notifications
-...
-### Doctor-
-...
-    1. Register/Login
-    2. View appointment requests
-    3. Accept/Reject appointments
-    4. Complete consultation
-    5. Start video consultation
-    6. Add/Edit/Delete consultation notes
-    7. View patient details
-...
+- Firebase Authentication
+- Login & Register
+- Forgot Password
+- Role-based Login (Doctor / Client)
 
-## Tech Stack:-
-...
-    1. Technology-               Used-
-    2. Flutter	                  UI Framework
-    3. Dart	                    Programming Language
-    4. Firebase Authentication 	User Authentication
-    5. Cloud Firestore	          Database
-    6. Firebase Cloud Messaging  Push Notifications
-    7. GetX	                    State Management & Routing
-    8. flutter_webrtc	          Video Calling
-    9. Cloud Firestore           Streams
-...
+---
 
-WebRTC SDK Used:-
-...
-The project uses:  flutter_webrtc
-...
+## 👤 Client (Patient)
 
-### Features:
-...
-    1. Video Streaming
-    2. Audio Streaming
-    3. Camera Access
-    4. Microphone Access
-    5. ICE Candidate Exchange
-    6. Peer Connection
-    7. SDP Offer/Answer
-...
+- Register/Login using Firebase Authentication
+- View Doctor List
+- Book Appointments
+- Cancel Pending Appointments
+- Receive Real-time Appointment Status Updates
+- Join Video Consultation after Appointment Acceptance
+- View Consultation History
+- Edit Profile
+- Receive Notifications
 
-## Folder Structure
-...
+---
+
+## 👨‍⚕️ Doctor
+
+- Register/Login
+- View Appointment Requests
+- Accept/Reject Appointments
+- Complete Consultation
+- Start Video Consultation
+- Add/Edit/Delete Consultation Notes
+- View Patient Details
+
+---
+
+# 🛠 Tech Stack
+
+| Technology | Purpose |
+|------------|----------|
+| Flutter | UI Framework |
+| Dart | Programming Language |
+| Firebase Authentication | User Authentication |
+| Cloud Firestore | Database |
+| Firebase Cloud Messaging | Push Notifications |
+| GetX | State Management & Routing |
+| flutter_webrtc | Video Calling |
+| Cloud Firestore Streams | Real-time Data Synchronization |
+
+---
+
+# 📹 WebRTC SDK Used
+
+This project uses:
+
+```yaml
+flutter_webrtc
+```
+
+### Features
+
+- Video Streaming
+- Audio Streaming
+- Camera Access
+- Microphone Access
+- ICE Candidate Exchange
+- Peer Connection
+- SDP Offer/Answer
+
+---
+
+# 📂 Folder Structure
+
+```text
 lib/
- ├── app/
- │    ├── bindings/
- │    ├── routes/
- │
- ├── core/
- │    ├── services/
- │    ├── widgets/
- │    ├── constants/
- │
- ├── data/
- │    ├── models/
- │    ├── repositories/
- │
- ├── features/
- │    ├── auth/
- │    ├── client/
- │    ├── dashboard/
- │    ├── appointment/
- │    ├── notes/
- │    ├── call/
- │
- └── main.dart
-...
+│
+├── app/
+│   ├── bindings/
+│   └── routes/
+│
+├── core/
+│   ├── services/
+│   ├── widgets/
+│   └── constants/
+│
+├── data/
+│   ├── models/
+│   └── repositories/
+│
+├── features/
+│   ├── auth/
+│   ├── client/
+│   ├── dashboard/
+│   ├── appointment/
+│   ├── notes/
+│   └── call/
+│
+└── main.dart
+```
 
-### How to Run the App
-...
-    1. Clone Repository
-       git clone <repository_url>
-       cd doctor_consultation
-    2. Install Flutter Packages
-       flutter pub get
-    3. Configure Firebase
-       Create a Firebase project and enable:
-           1 Authentication
-           2 Firestore Database
-           3 Firebase Storage
-           4 Firebase Cloud Messaging
-...
+---
 
-### Video Calling Flow
+# 🚀 How to Run the App
 
-#### Doctor:-
-...
-    1. Login
-    2. Accept Appointment
-    3. Open Appointment
-    4. Tap Start Video Call
-    5. Offer generated
-    6. Firestore signaling starts
-...
-#### Client:-
-....
-    1. Login
-    2. Appointment Accepted
-    3. Join Video Call button appears
-    4. Tap Join
-    5. Answer generated
-    6. Video consultation starts
-...
+## 1. Clone the Repository
 
-#### How to Test Video Calling
-**Device 1**
-Login as Doctor.
+```bash
+git clone <repository_url>
+cd doctor_consultation
+```
 
-**Device 2**
-Login as Client.
+## 2. Install Dependencies
 
-#### Steps:-
-...
-    1. Client books appointment.
-    2. Doctor receives appointment in real time.
-    3. Doctor accepts the appointment.
-    4. Client sees status change to Accepted.
-    5. Client taps Join Video Call.
-    6. Doctor taps Start Video Call.
-    7. Verify:
-        1 Audio
-        2 Video
-        3 Camera switching
-        4 Microphone toggle
-        5 Speaker toggle
-    8. End the call.
-    9. Verify appointment status changes to Completed and call history is saved.
-...
+```bash
+flutter pub get
+```
 
-    
-#### Future Improvements
-...
-    1. Add TURN server support for reliable WebRTC connectivity behind NAT/firewalls.
-    2. Implement incoming call screen with ringtone and accept/decline actions.
-    3. Integrate full Firebase Cloud Messaging for foreground, background, and terminated           notifications.
-    4. Add payment gateway integration (Razorpay/Stripe).
-    5. Add appointment reminders and calendar sync.
-    6. Enable file sharing and in-call chat.
-    7. Support group consultations.
-    8. Add call recording (where legally permitted).
-    9. Improve offline handling and synchronization.
-    10. Add comprehensive unit, widget, and integration tests.
-    11. Enhance security with stricter Firestore rules and role-based validation.
-    12. Optimize UI/UX for tablets and web.
-...
+## 3. Configure Firebase
 
-#### Dependencies:-
-...
-    flutter_webrtc
-    firebase_core
-    firebase_auth
-    cloud_firestore
-    firebase_storage
-    firebase_messaging
-    get
-    intl
-...
+Create a Firebase project and enable:
+
+- Authentication
+- Cloud Firestore
+- Firebase Storage
+- Firebase Cloud Messaging
+
+## 4. Run the Application
+
+```bash
+flutter run
+```
+
+## Build Release APK
+
+```bash
+flutter build apk --release
+```
+
+---
+
+# 📞 Video Calling Flow
+
+## Doctor
+
+1. Login
+2. Accept Appointment
+3. Open Appointment
+4. Tap **Start Video Call**
+5. Offer Generated
+6. Firestore Signaling Starts
+
+---
+
+## Client
+
+1. Login
+2. Appointment Accepted
+3. **Join Video Call** button appears
+4. Tap **Join**
+5. Answer Generated
+6. Video Consultation Starts
+
+---
+
+# 🧪 How to Test Video Calling
+
+Use **two physical devices** or **two emulators**.
+
+## Device 1
+
+Login as **Doctor**
+
+## Device 2
+
+Login as **Client**
+
+### Steps
+
+1. Client books an appointment.
+2. Doctor receives the appointment in real time.
+3. Doctor accepts the appointment.
+4. Client sees the appointment status change to **Accepted**.
+5. Client taps **Join Video Call**.
+6. Doctor taps **Start Video Call**.
+7. Verify:
+   - ✅ Audio
+   - ✅ Video
+   - ✅ Camera Switching
+   - ✅ Microphone Toggle
+   - ✅ Speaker Toggle
+8. End the call.
+9. Verify that:
+   - Appointment status changes to **Completed**
+   - Call history is saved successfully
+
+---
+
+# 🚀 Future Improvements
+
+- Add TURN server support for reliable WebRTC connectivity behind NAT/Firewalls.
+- Implement Incoming Call Screen with ringtone and Accept/Decline actions.
+- Integrate Firebase Cloud Messaging for Foreground, Background, and Terminated notifications.
+- Add Payment Gateway Integration (Razorpay/Stripe).
+- Add Appointment Reminders and Calendar Sync.
+- Enable In-call Chat and File Sharing.
+- Support Group Video Consultations.
+- Add Call Recording (where legally permitted).
+- Improve Offline Handling and Synchronization.
+- Add Unit, Widget, and Integration Tests.
+- Enhance Firestore Security Rules with Role-based Validation.
+- Optimize UI/UX for Tablets and Web.
+
+---
+
+# 📦 Dependencies
+
+```yaml
+dependencies:
+  flutter_webrtc:
+  firebase_core:
+  firebase_auth:
+  cloud_firestore:
+  firebase_storage:
+  firebase_messaging:
+  get:
+  intl:
+```
+
+---
