@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "462522344037",
+    "project_id": "doctor-consultation-1684c",
+    "storage_bucket": "doctor-consultation-1684c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462522344037:android:3439eb5a0e04a31f951c8c",
+        "android_client_info": {
+          "package_name": "com.example.dr_serv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuKNmYYLhZ7l9l7y1GcivtICrN1iWca6w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

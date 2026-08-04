@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 12+ (API 31+) uses the system SplashScreen API. Configure it to
+         match the custom Flutter SplashScreen so there is no white flash or
+         default app-icon flash while the engine starts. -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowSplashScreenBackground">@color/splash_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_icon_transparent</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/splash_background</item>
+    </style>
+    <!-- Theme applied to the Android Window as soon as the process has started.
+         Matches the custom splash background so the Flutter UI fades in from the
+         same colour. -->
+    <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">@color/splash_background</item>
+    </style>
+</resources>

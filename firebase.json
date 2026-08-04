@@ -1,0 +1,31 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "doctor-consultation-1684c",
+          "appId": "1:462522344037:android:3439eb5a0e04a31f951c8c",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "doctor-consultation-1684c",
+          "configurations": {
+            "android": "1:462522344037:android:3439eb5a0e04a31f951c8c",
+            "ios": "1:462522344037:ios:c6ac2f1d409d9cac951c8c",
+            "web": "1:462522344037:web:ca1faff134c94c0f951c8c",
+            "windows": "1:462522344037:web:bab65698f9d77805951c8c"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "functions": {
+    "source": "functions"
+  }
+}

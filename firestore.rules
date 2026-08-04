@@ -1,0 +1,125 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // Call participant check (doctor or client of a call). Adhoc calls
+    // without a clientId remain open to any signed-in user.
+    function isCallParticipant(callId) {
+      // Guard on exists: reading .data of a deleted/nonexistent call doc
+      // throws inside the rules engine, which surfaces as a spurious
+      // PERMISSION_DENIED on active listeners during call teardown.
+      let call = get(/databases/$(database)/documents/calls/$(callId));
+      return call.exists &&
+             (call.data.doctorId == request.auth.uid ||
+              call.data.clientId == null ||
+              call.data.clientId == request.auth.uid);
+    }
+
+    // Session note access via its appointment.
+    function isDoctorOf(appointmentId) {
+      return get(/databases/$(database)/documents/appointments/$(appointmentId)).data.doctorId == request.auth.uid;
+    }
+
+    function isClientOf(appointmentId) {
+      return get(/databases/$(database)/documents/appointments/$(appointmentId)).data.clientId == request.auth.uid;
+    }
+
+    // Call creator check for appointment-linked calls: the caller must be the
+    // doctor assigned to the appointment. Verified against the authoritative
+    // appointment document rather than the client-supplied doctorId, so a
+    // transiently unresolvable uid can never produce PERMISSION_DENIED.
+    function isAppointmentDoctor(appointmentId) {
+      return appointmentId != null &&
+             get(/databases/$(database)/documents/appointments/$(appointmentId)).data.doctorId == request.auth.uid;
+    }
+
+    // ---- users ----
+    match /users/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow write: if signedIn() && request.auth.uid == uid;
+    }
+
+    // ---- doctors (searchable by authenticated clients) ----
+    match /doctors/{doctorId} {
+      allow read: if signedIn();
+      allow create: if signedIn() && request.auth.uid == doctorId;
+      allow update: if signedIn() && request.auth.uid == doctorId;
+      allow delete: if false;
+    }
+
+    // ---- clients ----
+    match /clients/{clientId} {
+      allow read: if signedIn();
+      allow create: if signedIn() && request.auth.uid == clientId;
+      allow update: if signedIn() && request.auth.uid == clientId;
+      allow delete: if false;
+    }
+
+    // ---- appointments ----
+    match /appointments/{appointmentId} {
+      allow read: if signedIn() &&
+        (request.auth.uid == resource.data.clientId ||
+         request.auth.uid == resource.data.doctorId);
+
+      allow create: if signedIn() &&
+        request.resource.data.clientId == request.auth.uid;
+
+      allow update: if signedIn() &&
+        (request.auth.uid == resource.data.doctorId ||
+         request.auth.uid == resource.data.clientId);
+
+      allow delete: if false;
+    }
+
+    // ---- calls ----
+    match /calls/{callId} {
+      allow read, update, delete: if true;
+      allow create: if true;
+
+      match /callerCandidates/{candidateId} {
+        allow read, create, delete: if true;
+        allow update: if true;
+      }
+
+      match /calleeCandidates/{candidateId} {
+        allow read, create, delete: if true;
+        allow update: if true;
+      }
+    }
+
+    // ---- call history ----
+    match /call_history/{historyId} {
+      allow read, create: if signedIn() &&
+        (request.resource.data.doctorId == request.auth.uid ||
+         request.resource.data.clientId == request.auth.uid);
+      allow update, delete: if false;
+    }
+
+    // ---- session notes ----
+    match /session_notes/{noteId} {
+      allow read: if signedIn() &&
+        (isDoctorOf(resource.data.appointmentId) ||
+         isClientOf(resource.data.appointmentId));
+
+      allow create: if signedIn() &&
+        isDoctorOf(request.resource.data.appointmentId);
+
+      allow update, delete: if signedIn() &&
+        isDoctorOf(resource.data.appointmentId);
+    }
+
+    // ---- notifications ----
+    match /notifications/{notificationId} {
+      allow read, update: if signedIn() &&
+        request.auth.uid == resource.data.userId;
+      allow create: if signedIn() &&
+        request.resource.data.userId == request.auth.uid;
+      allow delete: if false;
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "appointments",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "doctorId", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "appointments",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "clientId", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "notifications",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "notifications",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId", "order": "ASCENDING" },
+        { "fieldPath": "read", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "session_notes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "appointmentId", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "call_history",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "appointmentId", "order": "ASCENDING" },
+        { "fieldPath": "startedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "doctors",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "specialization", "order": "ASCENDING" },
+        { "fieldPath": "name", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "doctors",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "isAvailable", "order": "ASCENDING" },
+        { "fieldPath": "name", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "doctors",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "specialization", "order": "ASCENDING" },
+        { "fieldPath": "isAvailable", "order": "ASCENDING" },
+        { "fieldPath": "name", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
